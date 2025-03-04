@@ -4,6 +4,67 @@
 - The project follows an Infrastructure as Code (IaC) approach, leveraging Terraform to provision OCI resources such as Kubernetes clusters, networking, and storage.
 - Jenkins automates the deployment process by integrating with GitHub, ensuring that any code changes trigger an end-to-end deployment workflow.
 
+## Architecture Overview
+
+```
+                                OCI-KubeNexus Architecture
+┌───────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                               │
+│  ┌─────────────┐     1. Clone & Execute     ┌────────────────────────────────────────┐        │
+│  │             │◄────────────────────────── │                                        │        │
+│  │  GitHub     │                            │                 User                   │───┐    │
+│  │  Repository │                            │                                        │   │    │
+│  │             │                            └────────────────────────────────────────┘   │    │
+│  └──────┬──────┘                                                                         │    │
+│         │                                                                                │    │
+│         │2. Clone Repo                                                                   │    │
+│         │                                                                                │    │
+│  ┌──────▼──────┐     3. Provision OCI       ┌────────────────────────────────────────┐   │    │
+│  │             │     Infrastructure         │      Oracle Cloud Infrastructure       │   │    │
+│  │  OCI-IAC    ├────────────────────────────►                                        │   │    │
+│  │ (Terraform) │                            │                                        │   │    │
+│  │             │                            │                                        │   │    │
+│  └──────┬──────┘                            │                                        │   │    │
+│         │                                   │                                        │   │    │
+│         │4. Configure                       │                                        │   │    │
+│         │                                   │                                        │   │    │
+│  ┌──────▼──────┐     5. Deploy              │                                        │   │    │
+│  │             │     Jenkins                │                                        │   │    │
+│  │  Jenkins    ├────────────────────────────►                                        │   │    │
+│  │  Module     │                            │                                        │   │    │
+│  │             │                            │                                        │   │    │
+│  └──────┬──────┘                            │                                        │   │    │
+│         │                                   │                                        │   │    │
+│         │6. Configure &                     │                                        │   │    │
+│         │   Deploy                          │          ┌─────────────┐               │   │    │
+│         │                                   │          │     OKE     │               │   │    │
+│  ┌──────▼──────┐     7. Apply K8s           │          │   Cluster   │◄──────────────│───┘    │
+│  │             │     Manifests              │          └─────────────┘               │        │
+│  │ k8s-        ├────────────────────────────►                                        │        │
+│  │ inception   │                            │                                        │        │
+│  │             │                            └────────────────────────────────────────┘        │
+│  └─────────────┘                                                                              │
+│                                                                                               │
+└───────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Workflow
+
+1. **Infrastructure Provisioning** - OCI-IAC module uses Terraform to provision:
+   - OKE Kubernetes cluster
+   - Network resources (VCN, subnets, security lists)
+   - Compute instance for Jenkins
+
+2. **CI/CD Setup** - Jenkins module:
+   - Automatically configures Jenkins with required plugins
+   - Sets up OCI and Kubernetes credentials
+   - Creates deployment pipeline
+
+3. **Application Deployment** - k8s-inception module:
+   - Deploys WordPress application with MariaDB database
+   - Configures Nginx as reverse proxy
+   - Sets up persistent storage and networking
+
 ## Modules
 
 ### 1. [OCI-IAC](OCI-IAC)

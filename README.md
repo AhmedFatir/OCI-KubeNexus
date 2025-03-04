@@ -108,17 +108,19 @@ The full project can be launched with a single command from the [**OCI-IAC**](OC
 
 1. **Clone the Repository:**
    ```bash
-   git clone --recurse-submodules <repo_url>
+   git clone --recurse-submodules https://github.com/AhmedFatir/OCI-KubeNexus.git
+   ```
+2. **Go to the OCI-IAC Module:**
+   ```bash
    cd OCI-KubeNexu/OCI-IAC/
    ```
-
-2. **Copy the Example Environment File and Set the Required Variables:**
+3. **Copy the Example Environment File and Set the Required Variables:**
    ```bash
    cp .env.example .env
    # Edit the .env file and set the values accordingly
    ```
 
-3. **Build and Start the Docker Containers:**
+4. **Build and Start the Docker Containers:**
    ```bash
    make
    ```

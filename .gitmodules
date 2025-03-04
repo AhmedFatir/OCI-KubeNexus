@@ -1,0 +1,9 @@
+[submodule "k8s-inception"]
+	path = k8s-inception
+	url = https://github.com/AhmedFatir/k8s-inception.git
+[submodule "jenkins"]
+	path = jenkins
+	url = https://github.com/AhmedFatir/jenkins.git
+[submodule "OCI-IAC"]
+	path = OCI-IAC
+	url = https://github.com/AhmedFatir/OCI-IAC.git

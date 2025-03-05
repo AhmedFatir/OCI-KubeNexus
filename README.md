@@ -110,6 +110,11 @@ The full project can be launched with a single command from the [**OCI-IAC**](OC
    ```bash
    git clone --recurse-submodules https://github.com/AhmedFatir/OCI-KubeNexus.git
    ```
+   - To update the submodules to latest commit
+   ```bash
+   git submodule update --recursive --remote
+   ```
+
 2. **Go to the OCI-IAC Module:**
    ```bash
    cd OCI-KubeNexu/OCI-IAC/

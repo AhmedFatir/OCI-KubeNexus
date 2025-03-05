@@ -110,28 +110,35 @@ The full project can be launched with a single command from the [**OCI-IAC**](OC
    ```bash
    git clone --recurse-submodules https://github.com/AhmedFatir/OCI-KubeNexus.git
    ```
-   - To update the submodules to latest commit
-   ```bash
-   git submodule update --recursive --remote
-   ```
 
-2. **Go to the OCI-IAC Module:**
+2. [**Go to the OCI-IAC Module:**]()
    ```bash
    cd OCI-KubeNexu/OCI-IAC/
    ```
-3. **Copy the Example Environment File and Set the Required Variables:**
+3. [**Copy the Example Environment File and Set the Required Variables:**]()
    ```bash
    cp .env.example .env
    # Edit the .env file and set the values accordingly
    ```
 
-4. **Build and Start the Docker Containers:**
+4. [**Build and Start the Docker Containers:**]()
    ```bash
    make
    ```
 
 This will provision the necessary OCI resources, set up Jenkins, and deploy the WordPress application on the Kubernetes cluster.
 
+[**Submodules Update**]()
+- To update the submodules to latest commit
+   ```bash
+   git submodule update --recursive --remote
+   ```
+- If you encounter an error durirng the submodules update, try the following steps:
+   ```bash
+   git submodule deinit -f --all; \
+   git submodule update --init --recursive; \
+   git submodule update --recursive --remote
+   ```
 ## Directory Structure
 
 ```

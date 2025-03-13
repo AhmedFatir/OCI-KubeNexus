@@ -3,6 +3,7 @@
 - OCI-KubeNexus is a fully automated CI/CD pipeline designed to deploy a [**Kubernetes**](https://kubernetes.io/) application on [**Oracle Cloud Infrastructure (OCI)**](https://www.oracle.com/cloud/) using [**Oracle Kubernetes Engine (OKE)**](https://www.oracle.com/cloud/cloud-native/kubernetes-engine/), [**Jenkins**](https://www.jenkins.io/), [**Terraform**](https://www.terraform.io/), and [**GitHub**]().
 - The project follows an Infrastructure as Code (IaC) approach, leveraging Terraform to provision OCI resources such as Kubernetes clusters, networking, and storage.
 - Jenkins automates the deployment process by integrating with GitHub, ensuring that any code changes trigger an end-to-end deployment workflow.
+![](https://github.com/AhmedFatir/AhmedFatir/blob/master/images/OCI-KubeNexus.png)
 
 ## Architecture Overview
 
